@@ -15,11 +15,20 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+
 #pragma once
 
-#define USE_SERIAL
 
-#define MASTER_LEFT
-//#define MASTER_RIGHT
+#define USE_I2C
+#define TAPPING_TERM 300
+#define TAPPING_TERM_PER_KEY
+#define IGNORE_MOD_TAP_INTERRUPT_PER_KEY
+#define TAPPING_FORCE_HOLD_PER_KEY
+#define PERMISSIVE_HOLD
+#define RETRO_TAPPING_PER_KEY
 
+#define SPLIT_HAND_MATRIX_GRID B6, D4
+//#define MASTER_LEFT
+// #define MASTER_RIGHT
 //#define EE_HANDS
+// Rows are doubled-up
