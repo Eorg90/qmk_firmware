@@ -21,26 +21,30 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "config_common.h"
 
 /* USB Device descriptor parameter */
-#define VENDOR_ID       0x03A8
+#define VENDOR_ID       0xFEED
+#define PRODUCT_ID      0x6060
 #define MANUFACTURER    OLKB
 #define PRODUCT         Planck
+#define DESCRIPTION     A compact ortholinear keyboard
 
 /* key matrix size */
 #define MATRIX_ROWS 4
 #define MATRIX_COLS 12
 
 /* Planck PCB default pin-out */
-#define MATRIX_ROW_PINS { D0, D5, B5, B6 }
-#define MATRIX_COL_PINS { F1, F0, B0, C7, F4, F5, F6, F7, D4, D6, B4, D7 }
+#define MATRIX_ROW_PINS { D1, D0, D4, C6 }
+#define MATRIX_COL_PINS { D7, E6, B4, B5, B6, B2, B3, B1, F7, F6, D3, F4 }
+//#define MATRIX_ROW_PINS { D0, D5, B5, B6 }
+//#define MATRIX_COL_PINS { F1, F0, B0, C7, F4, F5, F6, F7, D4, D6, B4, D7 }
 #define UNUSED_PINS
 
 #define QMK_ESC_OUTPUT F1
 #define QMK_ESC_INPUT D5
-#define QMK_LED     E6
+#define QMK_LED     B0
 #define QMK_SPEAKER C6
 
 #define AUDIO_VOICES
-#define AUDIO_PIN C6
+#define C6_AUDIO
 
 #define BACKLIGHT_PIN B7
 
@@ -51,7 +55,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define MATRIX_HAS_GHOST
 
 /* number of backlight levels */
-#define BACKLIGHT_LEVELS 3
+//#define BACKLIGHT_LEVELS 3
 
 /* Set 0 if debouncing isn't needed */
 #define DEBOUNCE 5

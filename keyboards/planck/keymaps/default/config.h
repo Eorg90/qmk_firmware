@@ -14,6 +14,9 @@
  * MIDI options
  */
 
+/* Prevent use of disabled MIDI features in the keymap */
+//#define MIDI_ENABLE_STRICT 1
+
 /* enable basic MIDI features:
    - MIDI notes can be sent when in Music mode is on
 */
@@ -33,4 +36,9 @@
 
 // Most tactile encoders have detents every 4 stages
 #define ENCODER_RESOLUTION 4
-
+#define TAPPING_TERM 300
+#define TAPPING_TERM_PER_KEY
+#define IGNORE_MOD_TAP_INTERRUPT_PER_KEY
+#define TAPPING_FORCE_HOLD_PER_KEY
+#define PERMISSIVE_HOLD
+#define RETRO_TAPPIGN_PER_KEY

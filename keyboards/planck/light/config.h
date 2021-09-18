@@ -5,17 +5,18 @@
 
 #undef PRODUCT
 #define PRODUCT Planck Light
-#define PRODUCT_ID 0xBEA2
+#undef PRODUCT_ID
+#define PRODUCT_ID 0x6065
 #define DEVICE_VER 0x0001
 
 #undef MATRIX_ROW_PINS
 #undef MATRIX_COL_PINS
 
-#define MATRIX_ROW_PINS { B0, E7, F0, F1 }
-#define MATRIX_COL_PINS { E6, E3, E4, D3, D4, D5, C0, A7, A6, E1, E0, D7 }
+#define MATRIX_ROW_PINS { D1, D0, D4, C6 }
+#define MATRIX_COL_PINS { D7, E6, B4, B5, B6, B2, B3, B1, F7, F6, D3, F4 }
 
-#define AUDIO_PIN C6
-#define AUDIO_PIN_ALT B5
+//#define C6_AUDIO
+//#define B5_AUDIO
 
 #undef BACKLIGHT_PIN
 
