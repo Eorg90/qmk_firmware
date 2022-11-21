@@ -167,7 +167,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_NAVI] = LAYOUT_ortho_4x12( 
      _______,KC_PGUP,KC_BSPC,KC_UP  ,KC_DEL ,KC_PGDN,KC_PMNS,KC_P7  ,KC_P8  ,KC_P9  ,KC_PPLS,KC_P0  , 
      KC_ENT ,KC_HOME,KC_LEFT,KC_DOWN,KC_RGHT,KC_END ,KC_PAST,KC_P4  ,KC_P5  ,KC_P6  ,KC_PDOT,_______,
-     KC_INS ,CM_UNDO,CM_CUT ,CM_COPY,CM_PSTE,KC_APP ,KC_PSLS,MOD_P1 ,MOD_P2 ,MOD_P3 ,MOD_DOT,KC_NLCK, 
+     KC_INS ,MOD_UDO,MOD_CUT,MOD_CPY,MOD_PST,KC_APP ,KC_PSLS,MOD_P1 ,MOD_P2 ,MOD_P3 ,MOD_DOT,KC_NLCK, 
      _______,_______,TGNAV  ,_______,_______,_______,KC_P0  ,KC_P0  ,_______,TGNAV  ,_______,_______
   ),
 
