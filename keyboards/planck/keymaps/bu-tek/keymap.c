@@ -119,6 +119,8 @@ enum custom_keycodes {
 #define MOD_VLD LALT_T(CM_VOLD)
 #define MOD_VLU LSFT_T(CM_VOLU)
 #define MOD_PRV LCTL_T(CM_MPRV)
+#define MOD_TAB SH_T(KC_TAB)
+#define MOD_ENT SH_T(KC_ENT)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -126,7 +128,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      MOUSESZ,KC_B   ,KC_U   ,KC_DOT ,KC_COMM,KC_LBRC,KC_P   ,KC_C   ,KC_L   ,KC_M   ,KC_F   ,MOUSE_X,
      SYMBOL ,KC_H   ,KC_I   ,KC_E   ,KC_A   ,KC_O   ,KC_D   ,KC_T   ,KC_R   ,KC_N   ,KC_S   ,SYMBOL ,
      KC_NO  ,MOD_K  ,MOD_Z  ,MOD_OE ,MOD_AE ,KC_Q   ,KC_J   ,MOD_G  ,MOD_W  ,MOD_V  ,MOD_Y  ,KC_NO  ,
-     KC_TAB ,RESCAPE,KC_NO  ,NUM_ESC,SFT_TAB,NAVBSPC,NAVSPC ,SFT_ENT,NUM_DEL,KC_NO  ,KC_NO  ,KC_ENT 
+     MOD_TAB,RESCAPE,KC_NO  ,NUM_ESC,SFT_TAB,NAVBSPC,NAVSPC ,SFT_ENT,NUM_DEL,KC_NO  ,KC_NO  ,MOD_ENT
   ),
 
   [_BUTECK] = LAYOUT_ortho_4x12( 
@@ -222,6 +224,10 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM*0;
         case SFT_TAB:
             return TAPPING_TERM*0;
+        case MOD_TAB:
+            return TAPPING_TERM*0.5;
+        case MOD_ENT:
+            return TAPPING_TERM*0.5;
         default:
             return TAPPING_TERM;
     }
