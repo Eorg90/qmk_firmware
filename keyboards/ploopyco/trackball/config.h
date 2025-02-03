@@ -23,10 +23,10 @@
 //#define NO_ACTION_TAPPING
 //#define NO_ACTION_ONESHOT
 
-#define ROTATIONAL_TRANSFORM_ANGLE 20
+#define ROTATIONAL_TRANSFORM_ANGLE 30
 
 // If board has a debug LED, you can enable it by defining this
-// #define DEBUG_LED_PIN F7
+#define DEBUG_LED_PIN B5
 
 /* PMW33XX Settings */
 #define PMW33XX_CS_PIN             B0
@@ -40,3 +40,5 @@
 
 #define ENCODER_A_PINS { F0 }
 #define ENCODER_B_PINS { F4 }
+
+#define ENCODER_RESOLUTION 10
