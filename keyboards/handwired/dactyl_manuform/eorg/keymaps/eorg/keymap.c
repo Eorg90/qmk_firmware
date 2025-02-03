@@ -203,9 +203,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_MOUSE] = LAYOUT_5x6(
      _______,_______,_______,_______,_______,_______,                        _______,_______,_______,_______,_______, TGMSE ,
-     _______,_______,_______,KC_BTN4,KC_BTN5,_______,                        _______,KC_BTN4,KC_BTN5,_______,_______,_______,
-     _______,KC_WH_L,KC_BTN2,KC_BTN3,KC_BTN1,KC_WH_R,                        KC_WH_L,KC_BTN1,KC_BTN3,KC_BTN2,KC_WH_R,_______,
-     _______,_______,_______,KC_WH_U,KC_WH_D,TGMSE  ,                        TGMSE  ,KC_WH_D,KC_WH_U,_______,_______,_______,
+     _______,_______,_______,MS_BTN4,MS_BTN5,_______,                        _______,MS_BTN4,MS_BTN5,_______,_______,_______,
+     _______,MS_WHLL,MS_BTN2,MS_BTN3,MS_BTN1,MS_WHLR,                        MS_WHLL,MS_BTN1,MS_BTN3,MS_BTN2,MS_WHLR,_______,
+     _______,_______,_______,MS_WHLU,MS_WHLD,TGMSE  ,                        TGMSE  ,MS_WHLD,MS_WHLU,_______,_______,_______,
      _______,_______,_______,_______,                                                        _______,_______,_______,_______,
                                      _______,_______,                        _______,_______,
                                              _______,TGMSE  ,        TGMSE  ,_______,
@@ -269,32 +269,32 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
-static uint16_t mouse_timer		= 0;
-static uint16_t mouse_debounce_timer	= 0;
-//static uint8_t	mouse_keycode_tracker	= 0;
-bool		tap_toggling		= false;
+// static uint16_t mouse_timer		= 0;
+// static uint16_t mouse_debounce_timer	= 0;
+// //static uint8_t	mouse_keycode_tracker	= 0;
+// bool		tap_toggling		= false;
 
-void ps2_mouse_moved_user(report_mouse_t* mouse_report) {
-	int8_t x = mouse_report->x;
-	int8_t y = mouse_report->y;
-	if ((x || y) && timer_elapsed(mouse_timer) > 125) {
-		mouse_timer = timer_read();
-		if (!layer_state_is(_MOUSE) && timer_elapsed(mouse_debounce_timer) > 125) {
-			layer_on(_MOUSE);
-		}
-	}
-//#	ifdef TAPPING_TERM_PER_KEY
-//	if (timer_elapsed(mouse_debounce_timer) > get_tapping_term(KC_BTN1, NULL))
-//#	else
-//	if (timer_elapsed(mouse_debounce_timer) > TAPPING_TERM)
-//#	endif
-}
+// void ps2_mouse_moved_user(report_mouse_t* mouse_report) {
+// 	int8_t x = mouse_report->x;
+// 	int8_t y = mouse_report->y;
+// 	if ((x || y) && timer_elapsed(mouse_timer) > 125) {
+// 		mouse_timer = timer_read();
+// 		if (!layer_state_is(_MOUSE) && timer_elapsed(mouse_debounce_timer) > 125) {
+// 			layer_on(_MOUSE);
+// 		}
+// 	}
+// //#	ifdef TAPPING_TERM_PER_KEY
+// //	if (timer_elapsed(mouse_debounce_timer) > get_tapping_term(KC_BTN1, NULL))
+// //#	else
+// //	if (timer_elapsed(mouse_debounce_timer) > TAPPING_TERM)
+// //#	endif
+// }
 
-void matrix_scan_user(void) {
-	if (timer_elapsed(mouse_timer) > 650 && layer_state_is(_MOUSE)) {
-		layer_off(_MOUSE);
-	}
-}
+// void matrix_scan_user(void) {
+// 	if (timer_elapsed(mouse_timer) > 650 && layer_state_is(_MOUSE)) {
+// 		layer_off(_MOUSE);
+// 	}
+// }
 
 bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
