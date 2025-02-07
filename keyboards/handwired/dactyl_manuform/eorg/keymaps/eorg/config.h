@@ -20,8 +20,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #define EE_HANDS
-#define MAX_DEFERRED_EXECUTORS 10
-#define SMTD_GLOBAL_TAP_TERM 300
-#define SMTD_GLOBAL_SEQUENCE_TERM 150
-#define SMTD_GLOBAL_FOLLOWING_TAP_TERM 300
-#define SMTD_GLOBAL_RELEASE_TERM 0

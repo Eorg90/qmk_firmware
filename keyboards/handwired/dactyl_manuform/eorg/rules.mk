@@ -4,4 +4,3 @@
 #   the appropriate keymap folder that will get included automatically
 #
 SWAP_HANDS_ENABLE = yes
-DEFERRED_EXEC_ENABLE = yes

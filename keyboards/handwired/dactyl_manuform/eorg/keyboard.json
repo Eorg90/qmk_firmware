@@ -11,7 +11,8 @@
     "tapping": {
         "term": 300,
         "term_per_key": true,
-        "retro_per_key": true
+        "retro_per_key": true,
+        "hold_on_other_key_press_per_key": true
     },
     "features": {
         "bootmagic": false,

@@ -46,33 +46,27 @@ enum layers {
 #define NAVSPC LT(_NAVI, KC_SPC)
 #define NUMTAB LT(_NUMBER, KC_TAB)
 #define NUMENT LT(_NUMBER, KC_ENT)
+#define NUM_ESC LT(_NUMBER, KC_ESC)
+#define NUM_DEL LT(_NUMBER, KC_DEL)
 
-enum custom_keycodes {
-    SMTD_KEYCODES_BEGIN = SAFE_RANGE,
-    CKC_K,
-    CKC_Z,
-    CKC_OE,
-    CKC_AE,
-    CKC_Y,
-    CKC_V,
-    CKC_W,
-    CKC_G,
-    CKC_BSPC,
-    CKC_SPC,
-    CKC_TAB,
-    CKC_ENT,
-    CKC_ESC,
-    CKC_DEL,
-    CKC_SZ,
-    CKC_X,
-    CKC_P1,
-    CKC_P2,
-    CKC_P3,
-    CKC_DOT,
-    SMTD_KEYCODES_END
-};
+// mod-taps
+#define SFT_ENT RSFT_T(KC_ENT)
+#define SFT_TAB LSFT_T(KC_TAB)
 
-#include "sm_td.h"
+#define MOD_K LGUI_T(KC_K)
+#define MOD_Z LALT_T(KC_Z)
+#define MOD_OE LSFT_T(KC_SCLN)
+#define MOD_AE LCTL_T(KC_QUOT)
+
+#define MOD_Y RGUI_T(KC_Y)
+#define MOD_V LALT_T(KC_V)
+#define MOD_W RSFT_T(KC_W)
+#define MOD_G RCTL_T(KC_G)
+
+#define MOD_DOT RGUI_T(KC_DOT)
+#define MOD_P3 LALT_T(KC_P3)
+#define MOD_P2 RSFT_T(KC_P2)
+#define MOD_P1 RCTL_T(KC_P1)
 
 #ifdef SWAP_HANDS_ENABLE
 const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] = {
@@ -99,10 +93,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      RESCAPE,KC_NO  ,KC_NO  ,KC_NO  ,KC_NO  ,KC_NO  ,                        KC_NO  ,KC_NO  ,KC_NO  ,KC_NO  ,KC_NO  ,KC_NO  ,
      KC_MINS,KC_B   ,KC_U   ,KC_DOT ,KC_COMM,KC_LBRC,                        KC_P   ,KC_C   ,KC_L   ,KC_M   ,KC_F   ,KC_X   ,
      SYMBOL ,KC_H   ,KC_I   ,KC_E   ,KC_A   ,KC_O   ,                        KC_D   ,KC_T   ,KC_R   ,KC_N   ,KC_S   ,SYMBOL ,
-     TGMSE  ,CKC_K  ,CKC_Z  ,CKC_OE ,CKC_AE ,KC_Q   ,                        KC_J   ,CKC_G  ,CKC_W  ,CKC_V  ,CKC_Y  ,TGMSE  ,
+     TGMSE  ,MOD_K  ,MOD_Z  ,MOD_OE ,MOD_AE ,KC_Q   ,                        KC_J   ,MOD_G  ,MOD_W  ,MOD_V  ,MOD_Y  ,TGMSE  ,
      SH_OS  ,KC_NO  ,KC_NO  ,KC_NO  ,                                                        KC_NO  ,KC_NO  ,KC_NO  ,SH_OS  ,
-                                     CKC_TAB,CKC_BSPC,                        CKC_SPC,CKC_ENT,
-                                             SH_MON ,CKC_ESC,        CKC_DEL,SH_MON ,
+                                     SFT_TAB,NAVBSPC,                         NAVSPC ,SFT_ENT,
+                                             SH_MON ,NUM_ESC,        NUM_DEL,SH_MON ,
                                              KC_NO  ,KC_NO  ,        KC_NO  ,KC_NO
   ),
 
@@ -133,7 +127,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_MUTE,KC_MPLY,KC_VOLD,KC_VOLU,KC_MPRV,KC_MNXT,                        KC_CALC,KC_NO  ,KC_NO  ,KC_NO  ,KC_NO  ,_______,
      KC_INS ,KC_PGUP,KC_BSPC,KC_UP  ,KC_DEL ,KC_PGDN,                        KC_PMNS,KC_P7  ,KC_P8  ,KC_P9  ,KC_PPLS,KC_NUM ,
      KC_ENT ,KC_HOME,KC_LEFT,KC_DOWN,KC_RGHT,KC_END ,                        KC_PAST,KC_P4  ,KC_P5  ,KC_P6  ,KC_PDOT,_______,
-     _______,CM_UNDO,CM_CUT ,CM_COPY,CM_PSTE,KC_APP ,                        KC_PSLS,CKC_P1 ,CKC_P2 ,CKC_P3 ,CKC_DOT,KC_PSCR,
+     _______,CM_UNDO,CM_CUT ,CM_COPY,CM_PSTE,KC_APP ,                        KC_PSLS,MOD_P1 ,MOD_P2 ,MOD_P3 ,MOD_DOT,KC_PSCR,
      _______,_______,TGNAV  ,_______,                                                        _______,TGNAV  ,_______,_______,
                                      _______,_______,                        KC_P0  ,_______,
                                              _______,_______,        _______,_______,
@@ -174,36 +168,134 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 };
 
-void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        SMTD_MT(CKC_K, KC_K, KC_LEFT_GUI, 1)
-        SMTD_MT(CKC_Z, KC_Z, KC_LEFT_ALT, 1)
-        SMTD_MT(CKC_OE, KC_SCLN, KC_LSFT, 1)
-        SMTD_MT(CKC_AE, KC_QUOT, KC_LEFT_CTRL, 1)
-        SMTD_MT(CKC_Y, KC_Y, KC_RIGHT_GUI, 1)
-        SMTD_MT(CKC_V, KC_V, KC_LEFT_ALT, 1)
-        SMTD_MT(CKC_W, KC_W, KC_RSFT, 1)
-        SMTD_MT(CKC_G, KC_G, KC_RIGHT_CTRL, 1)
-        SMTD_MT(CKC_DOT, KC_DOT, KC_RIGHT_GUI, 1)
-        SMTD_MT(CKC_P3, KC_P3, KC_LEFT_ALT, 1)
-        SMTD_MT(CKC_P2, KC_P2, KC_RSFT, 1)
-        SMTD_MT(CKC_P1, KC_P1, KC_RIGHT_CTRL, 1)
-        SMTD_MT(CKC_TAB, KC_TAB, KC_LSFT, 1)
-        SMTD_MT(CKC_ENT, KC_ENT, KC_RSFT, 1)
-
-        SMTD_LT(CKC_BSPC, KC_BSPC, _NAVI, 1)
-        SMTD_LT(CKC_SPC, KC_SPC, _NAVI, 1)
-        SMTD_LT(CKC_ESC, KC_ESC, _NUMBER, 1)
-        SMTD_LT(CKC_DEL, KC_DEL, _NUMBER, 1)
-        SMTD_LT(CKC_SZ, KC_MINS, _SYMBOL, 1)
-        SMTD_LT(CKC_X, KC_X, _SYMBOL, 1)
+        case NAVSPC:
+            return TAPPING_TERM*2;
+        case NAVBSPC:
+            return TAPPING_TERM*2;
+        case MOD_K:
+            return TAPPING_TERM*2;
+        case MOD_Y:
+            return TAPPING_TERM*2;
+        case SFT_ENT:
+            return TAPPING_TERM*0;
+        case SFT_TAB:
+            return TAPPING_TERM*0;
+        default:
+            return TAPPING_TERM;
     }
 }
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (!process_smtd(keycode, record)) {
-        return false;
+bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case SFT_TAB:
+            return true;
+        case SFT_ENT:
+            return true;
+        default:
+            return false;
     }
+}
 
-    return true;
+bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case SFT_TAB:
+            return true;
+        case SFT_ENT:
+            return true;
+        default:
+            return false;
+    }
+}
+bool LSFT_IS_INTENDED = false;
+bool RSFT_IS_INTENDED = false;
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case SFT_TAB: {
+            if (record->event.pressed) {
+                if (get_mods() & MOD_BIT(KC_LSFT)) {
+                    LSFT_IS_INTENDED = true;
+                }
+                if (get_mods() & MOD_MASK_ALT) {
+                    tap_code16(KC_TAB);
+                    return false;
+                } else if (get_mods() & MOD_MASK_SHIFT) {
+                    tap_code16(KC_TAB);
+                    return false;
+                } else if (get_mods() & MOD_MASK_CTRL) {
+                    tap_code16(KC_TAB);
+                    return false;
+                } else if (get_mods() & MOD_MASK_GUI) {
+                    tap_code16(KC_TAB);
+                    return false;
+                } else {
+                    return true;
+                }
+            } else {
+                if (get_mods() & MOD_BIT(KC_LSFT)) {
+                    if (LSFT_IS_INTENDED) {
+                        LSFT_IS_INTENDED = false;
+                        return false;
+                    } else {
+                        return true;
+                    }
+                } else if (get_mods() & MOD_MASK_ALT) {
+                    return false;
+                } else if (get_mods() & MOD_MASK_SHIFT) {
+                    return false;
+                } else if (get_mods() & MOD_MASK_CTRL) {
+                    return false;
+                } else if (get_mods() & MOD_MASK_GUI) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        }
+        case SFT_ENT: {
+            if (record->event.pressed) {
+                if (get_mods() & MOD_BIT(KC_RSFT)) {
+                    RSFT_IS_INTENDED = true;
+                }
+                if (get_mods() & MOD_MASK_ALT) {
+                    tap_code16(KC_ENT);
+                    return false;
+                } else if (get_mods() & MOD_MASK_SHIFT) {
+                    tap_code16(KC_ENT);
+                    return false;
+                } else if (get_mods() & MOD_MASK_CTRL) {
+                    tap_code16(KC_ENT);
+                    return false;
+                } else if (get_mods() & MOD_MASK_GUI) {
+                    tap_code16(KC_ENT);
+                    return false;
+                } else {
+                    return true;
+                }
+            } else {
+                if (get_mods() & MOD_BIT(KC_RSFT)) {
+                    if (RSFT_IS_INTENDED) {
+                        RSFT_IS_INTENDED = false;
+                        return false;
+                    } else {
+                        return true;
+                    }
+                } else if (get_mods() & MOD_MASK_ALT) {
+                    return false;
+                } else if (get_mods() & MOD_MASK_SHIFT) {
+                    return false;
+                } else if (get_mods() & MOD_MASK_CTRL) {
+                    return false;
+                } else if (get_mods() & MOD_MASK_GUI) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        }
+        default: {
+            return true;
+        }
+    }
 }
